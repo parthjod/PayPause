@@ -1,0 +1,105 @@
+{
+  "hero": {
+    "tagline": "A scam message is easy to miss. A one-second check is not.",
+    "tags": {
+      "upiSafe": "UPI Safe",
+      "onDevice": "On-Device",
+      "plainLanguage": "Plain Language"
+    }
+  },
+  "cards": {
+    "scamCheck": {
+      "kicker": "Instant Verdict",
+      "heading": "Scam Check",
+      "body": "Paste a suspicious message and know in seconds if it is trying to trick you."
+    },
+    "qrDecoder": {
+      "kicker": "Before You Scan",
+      "heading": "QR Decoder",
+      "body": "See whether a QR code sends money out or brings money in, before you tap."
+    },
+    "onDevice": {
+      "kicker": "Your Data Stays Here",
+      "heading": "On-Device",
+      "body": "Nothing you paste ever leaves your phone. The check runs locally, not on a server."
+    },
+    "hindiEnglish": {
+      "kicker": "Code-Mixed Text",
+      "heading": "Hindi-English",
+      "body": "Reads scam messages written in mixed Hindi and English, the way they actually arrive."
+    },
+    "learn": {
+      "kicker": "Why, Not Just What",
+      "heading": "Learn As You Go",
+      "body": "Every verdict explains the scam pattern behind it, so you recognize it next time."
+    }
+  },
+  "panels": {
+    "bridge": {
+      "heading": "The pause before you pay.",
+      "body": "Every UPI scam relies on you acting before you think. PayPause puts one moment of clarity between a suspicious message and your money.",
+      "stat1dt": "77M",
+      "stat1dd": "Indians targeted by digital payment scams annually",
+      "stat2dt": "0 bytes",
+      "stat2dd": "of your message content sent to any server"
+    },
+    "bazaar": {
+      "heading": "Check like forwarding to a friend.",
+      "body": "Share a suspicious message to PayPause the same way you forward it to someone you trust. One tap, no accounts, no signup."
+    }
+  },
+  "verdicts": {
+    "FAKE_REFUND_QR": {
+      "headlineScam": "This QR code will send money out of your account, not receive it. Do not scan.",
+      "headlineSafe": "This QR code looks safe.",
+      "explanation": "FAKE REFUND QR — The scammer told you to scan to receive money, but the QR code initiates an outgoing payment."
+    },
+    "KYC_PHISHING": {
+      "headlineScam": "This link is asking for bank login details. Real banks do not do this.",
+      "headlineSafe": "This message looks safe.",
+      "explanation": "KYC PHISHING — A fake message threatening account block steals credentials via a phishing form."
+    },
+    "OTP_SOCIAL_ENGINEERING": {
+      "headlineScam": "Do not share your OTP with anyone. It authorizes a transaction you did not agree to.",
+      "headlineSafe": "This message looks safe.",
+      "explanation": "OTP SOCIAL ENGINEERING — A caller or message asks you to read out an OTP under the pretence of verification."
+    },
+    "FAKE_PAYMENT_SCREENSHOT": {
+      "headlineScam": "Do not confirm delivery based on this screenshot. No payment was made.",
+      "headlineSafe": "This screenshot looks legitimate.",
+      "explanation": "FAKE PAYMENT SCREENSHOT — A fabricated screenshot claims payment was sent to pressure a seller."
+    },
+    "CUSTOMER_CARE_IMPERSONATION": {
+      "headlineScam": "This is not a real contact from your bank or UPI provider.",
+      "headlineSafe": "This message looks safe.",
+      "explanation": "CUSTOMER CARE IMPERSONATION — A fake number or message poses as your bank to steal credentials."
+    },
+    "UNKNOWN": {
+      "headlineScam": "This message may be suspicious. Proceed with caution.",
+      "headlineSafe": "This message looks safe.",
+      "explanation": "UNKNOWN PATTERN — No known scam category matched, but remain cautious."
+    }
+  },
+  "ui": {
+    "checkPlaceholder": "Paste or type a suspicious message here…",
+    "checkButton": "Check this message",
+    "checking": "Checking…",
+    "demoMode": "Running in demo mode — scam model not loaded. Results are not real.",
+    "feedbackLabel": "Was this verdict correct?",
+    "feedbackCorrect": "Correct",
+    "feedbackIncorrect": "Incorrect",
+    "feedbackThanks": "Thanks for the feedback.",
+    "openDetails": "Open product details",
+    "scanCamera": "Scan with camera",
+    "uploadQR": "Upload a QR screenshot",
+    "backHome": "← Back",
+    "outgoing": "Outgoing payment",
+    "collect": "Incoming collect",
+    "payee": "Payee",
+    "upiId": "UPI ID",
+    "amount": "Amount",
+    "ref": "Reference",
+    "confidence": "Confidence",
+    "languageLabel": "EN"
+  }
+}

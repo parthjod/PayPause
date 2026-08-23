@@ -1,0 +1,128 @@
+/* ============================================================
+   src/index.css — Design tokens, @font-face, global resets,
+   and shared utility classes.
+   ============================================================ */
+
+@font-face {
+  font-family: 'Ogg Medium';
+  src: url('https://dcym8fthxf5uu.cloudfront.net/fonts/247a073c-29f5-4a89-aa3a-741020f346fc/OggText-Medium.woff2')
+       format('woff2');
+  font-display: swap;
+}
+
+/* ── Exact :root block from paypause_design.md §4 ──────────── */
+:root {
+  --mx: 0; --my: 0;
+
+  --back-opacity: 1; --back-x: 0px; --back-y: 0px; --back-scale: 0.76;
+
+  --four-y: 10vh; --four-scale: 0.78;
+
+  --bazaar-y: 20vh;
+
+  --blur-px: 0px; --back-brightness: 1;
+
+  --bazaar-blur-px: 0px; --bazaar-brightness: 1; --bazaar-saturation: 1;
+
+  --shade-opacity: 1; --shade-z: 2;
+
+  --shade-top-alpha: 0; --shade-mid-alpha: 0; --shade-bottom-alpha: 0;
+
+  --blur-tint: 10, 60, 120;
+
+  --title-y: 0px; --title-scale: 1; --title-opacity: 1;
+
+  --bridge-x: -50%; --bridge-y: 0px; --bridge-bottom: 5vh;
+  --bridge-width: 67.2vw; --bridge-scale: 1.02;
+
+  --split-left-x: -50%; --split-left-y: 0px; --split-left-scale: 1;
+
+  --split-right-x: -50%; --split-right-y: 0px; --split-right-scale: 1;
+
+  --frame2-opacity: 0; --frame2-x: -50%; --frame2-y: -50%; --frame2-scale: 1.06;
+
+  --intro-copy-y: 0px; --intro-copy-opacity: 1;
+
+  --panel2-opacity: 0; --panel2-y: calc(-50% + 58px);
+
+  --panel3-opacity: 0; --panel3-y: calc(-50% + 58px);
+
+  --sights-opacity: 0; --sights-controls-opacity: 0; --sights-y: 0px;
+  --sights-enter-x: 420vw; --sights-visibility: hidden;
+  --sights-shift: 0px; --sights-scale: 1;
+  --sights-top: clamp(112px, 19vh, 220px);
+  --sights-screen-top: clamp(112px, 19vh, 220px);
+
+  --ink: #050c14;
+  --paper: #eef3ff;
+  --shadow: rgba(0, 0, 0, 0.34);
+
+  font-family: Inter, Satoshi, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--paper);
+  background: #050c14;
+  letter-spacing: 0;
+}
+
+/* ── Global resets ─────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Shared utility classes ────────────────────────────────── */
+
+.site-logo {
+  font-family: 'Ogg Medium', Georgia, serif;
+  font-size: clamp(15px, 1.35vw, 20px);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--paper);
+  text-decoration: none;
+}
+
+.sight-pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+/* ── Motion safety ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

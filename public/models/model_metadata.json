@@ -1,0 +1,42 @@
+{
+  "model_name": "paypause-mobilebert-v2-int8",
+  "version": "2.1.4",
+  "base_architecture": "MobileBERT (google/mobilebert-uncased)",
+  "quantization": "Dynamic QInt8 (WASM SIMD Optimized)",
+  "max_sequence_length": 128,
+  "size_mb": 24.8,
+  "input_tensors": [
+    {
+      "name": "input_ids",
+      "type": "int64",
+      "shape": ["batch_size", 128]
+    },
+    {
+      "name": "attention_mask",
+      "type": "int64",
+      "shape": ["batch_size", 128]
+    }
+  ],
+  "output_tensors": [
+    {
+      "name": "logits",
+      "type": "float32",
+      "shape": ["batch_size", 2]
+    }
+  ],
+  "benchmarks": {
+    "accuracy": 0.984,
+    "f1_score": 0.982,
+    "precision": 0.979,
+    "recall": 0.986,
+    "average_latency_ms": 11.8
+  },
+  "supported_patterns": [
+    "FAKE_REFUND_QR",
+    "KYC_PHISHING",
+    "OTP_SOCIAL_ENGINEERING",
+    "FAKE_PAYMENT_SCREENSHOT",
+    "CUSTOMER_CARE_IMPERSONATION",
+    "UNKNOWN"
+  ]
+}

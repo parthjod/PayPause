@@ -1,0 +1,173 @@
+/* src/styles/ScamCheck.css */
+
+.scam-check {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: rgba(0, 3, 6, 0.68);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(238, 243, 255, 0.18);
+  border-radius: 24px;
+  padding: clamp(20px, 3vw, 32px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0);
+  color: var(--paper);
+  transition: max-width 300ms ease, width 300ms ease;
+  width: 100%;
+}
+
+/* 2-pane side-by-side layout on desktop when result is present */
+@media (min-width: 720px) {
+  .scam-check.has-result {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .scam-check.has-result .scam-check-result-pane {
+    margin-top: 30px;
+  }
+}
+
+.scam-check-input-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.scam-check-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.scam-check h1 {
+  font-family: 'Ogg Medium', Georgia, serif;
+  font-size: clamp(24px, 2.8vw, 34px);
+  color: var(--paper);
+  line-height: 1.15;
+  font-weight: normal;
+}
+
+.scam-check-subtitle {
+  font-size: 13.5px;
+  opacity: 0.75;
+  line-height: 1.55;
+  color: var(--paper);
+}
+
+.text-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.text-input-field {
+  width: 100%;
+  min-height: 100px;
+  max-height: 130px;
+  background: rgba(238, 243, 255, 0.07);
+  border: 1px solid rgba(238, 243, 255, 0.16);
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--paper);
+  resize: none;
+  font-family: inherit;
+  transition: border-color 200ms, background 200ms;
+  outline: none;
+}
+
+.text-input-field::placeholder {
+  opacity: 0.45;
+  color: var(--paper);
+}
+
+.text-input-field:focus {
+  border-color: rgba(238, 243, 255, 0.40);
+  background: rgba(238, 243, 255, 0.10);
+}
+
+.scam-check-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.check-button {
+  background: rgba(10, 60, 120, 0.65);
+  border: 1px solid rgba(238, 243, 255, 0.32);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 999px;
+  padding: 9px 24px;
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--paper);
+  transition: background 200ms, border-color 200ms, transform 200ms;
+}
+
+.check-button:hover:not(:disabled) {
+  background: rgba(10, 60, 120, 0.85);
+  border-color: rgba(238, 243, 255, 0.50);
+  transform: translateY(-1px);
+}
+
+.check-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.clear-button {
+  background: rgba(238, 243, 255, 0.10);
+  border: 1px solid rgba(238, 243, 255, 0.20);
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-size: 13px;
+  color: var(--paper);
+  opacity: 0.85;
+  transition: background 200ms, opacity 200ms;
+}
+
+.clear-button:hover {
+  background: rgba(238, 243, 255, 0.18);
+  opacity: 1;
+}
+
+.model-inference-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--paper);
+  opacity: 0.70;
+  letter-spacing: 0.02em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.4;
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 6px rgba(52, 211, 153, 0.8);
+  flex-shrink: 0;
+  display: inline-block;
+  animation: pulse-badge-dot 2.4s infinite ease-in-out;
+}
+
+@keyframes pulse-badge-dot {
+  0%, 100% { opacity: 0.55; transform: scale(0.95); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.scam-check-result-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

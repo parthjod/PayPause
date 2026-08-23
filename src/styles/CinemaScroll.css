@@ -1,0 +1,394 @@
+/* src/styles/CinemaScroll.css */
+
+.site-shell {
+  position: relative;
+  background: var(--ink);
+  min-height: 100vh;
+}
+
+/* ── Sticky Scroll Stage ───────────────────────────────────── */
+.cinema-scroll {
+  height: 3800px;
+  position: relative;
+}
+
+.stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ── World Layer ───────────────────────────────────────────── */
+.world {
+  position: absolute;
+  inset: 0;
+}
+
+/* ── Universal Scene Layers ────────────────────────────────── */
+.scene-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform, opacity;
+}
+
+/* 1. Sky (farthest background) */
+.sky-img {
+  z-index: 0;
+  transform: translate(calc(var(--mx) * -14px), calc(var(--my) * -6px));
+}
+
+/* 2. Back Stack (Mountains, Town & River) */
+.back-stack {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  filter: blur(var(--blur-px)) brightness(var(--back-brightness));
+  transform:
+    scale(var(--back-scale)) translate(var(--back-x), var(--back-y));
+  transform-origin: center center;
+  will-change: transform, filter;
+}
+
+.back-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.back-four {
+  /* Green Mountains Ridge */
+  z-index: 0;
+  transform: translateY(var(--four-y)) scale(var(--four-scale));
+  transform-origin: center top;
+}
+
+.back-bazaar {
+  /* Town & Turquoise River — 100% crisp and clear! */
+  z-index: 2;
+  transform: translateY(var(--bazaar-y));
+  filter:
+    saturate(var(--bazaar-saturation)) brightness(var(--bazaar-brightness));
+  will-change: transform, filter;
+}
+
+/* 3. Hero Title: PAYPAUSE */
+/* Narrower font-size so all letters fit unclipped inside the arch opening */
+.hero-title {
+  position: absolute;
+  left: 49%;
+  top: 35%;
+  transform:
+    translateX(-50%) translateY(calc(-50% + var(--title-y))) scale(var(--title-scale));
+  opacity: var(--title-opacity);
+  font-family: 'Ogg Medium', Georgia, serif;
+  font-size: clamp(32px, 5.4vw, 80px);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+  z-index: 3;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  line-height: 1;
+  will-change: transform, opacity;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.45);
+}
+
+/* 4. Splitframe Towers (Left and Right) */
+.splitframe-img {
+  z-index: 4;
+}
+
+.splitframe-left {
+  transform:
+    translateX(var(--split-left-x)) translateY(var(--split-left-y)) scale(var(--split-left-scale));
+  transform-origin: left center;
+}
+
+.splitframe-right {
+  transform:
+    translateX(var(--split-right-x)) translateY(var(--split-right-y)) scale(var(--split-right-scale));
+  transform-origin: right center;
+}
+
+/* 5. Arch Foreground (Stone Bridge) */
+.bridge-img {
+  z-index: 5;
+  transform:
+    translateX(var(--bridge-x)) translateY(var(--bridge-y)) scale(var(--bridge-scale));
+  transform-origin: center center;
+}
+
+/* 6. Navy Shade Gradient Overlay */
+.shade {
+  position: absolute;
+  inset: 0;
+  z-index: var(--shade-z);
+  pointer-events: none;
+  background: linear-gradient(to bottom,
+      rgba(var(--blur-tint), var(--shade-top-alpha)) 0%,
+      rgba(var(--blur-tint), var(--shade-mid-alpha)) 50%,
+      rgba(var(--blur-tint), var(--shade-bottom-alpha)) 100%);
+  will-change: background;
+}
+
+/* ── Header ────────────────────────────────────────────────── */
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(20px, 3.5vh, 36px) clamp(24px, 4.5vw, 64px);
+}
+
+.site-nav {
+  display: flex;
+  gap: clamp(28px, 4vw, 56px);
+  list-style: none;
+}
+
+.site-nav a {
+  font-size: 13.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+  opacity: 0.95;
+  font-weight: 500;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.7);
+  transition: opacity 200ms, text-shadow 200ms;
+}
+
+.site-nav a:hover {
+  opacity: 1;
+  text-shadow: 0 1px 16px rgba(255, 255, 255, 0.6);
+}
+
+.language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+  opacity: 0.95;
+  font-weight: 500;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.7);
+  transition: opacity 200ms;
+}
+
+.language-switcher:hover {
+  opacity: 1;
+}
+
+/* ── Intro Copy (Bottom Glass Capsule from CleanShot) ──────── */
+.intro-copy {
+  position: absolute;
+  bottom: clamp(24px, 4.5vh, 52px);
+  left: 50%;
+  transform:
+    translateX(-50%) translateY(var(--intro-copy-y));
+  opacity: var(--intro-copy-opacity);
+  text-align: center;
+  z-index: 6;
+  pointer-events: none;
+  will-change: transform, opacity;
+  width: min(540px, 92vw);
+  background: rgba(5, 12, 20, 0.48);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(238, 243, 255, 0.15);
+  border-radius: 22px;
+  padding: 14px 22px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.intro-copy p {
+  font-size: clamp(13px, 1.3vw, 16px);
+  line-height: 1.5;
+  color: var(--paper);
+  opacity: 0.92;
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.hero-tags span {
+  background: rgba(10, 60, 120, 0.55);
+  border: 1px solid rgba(238, 243, 255, 0.25);
+  color: var(--paper);
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* ── Story Panels (CleanShot typography & layout) ─────────── */
+.story-panel {
+  position: absolute;
+  left: clamp(24px, 8vw, 120px);
+  max-width: min(520px, 90vw);
+  z-index: 7;
+  pointer-events: auto;
+}
+
+.story-panel-bridge {
+  top: 50%;
+  transform: translateY(calc(-50% + var(--panel2-y)));
+  opacity: var(--panel2-opacity);
+  will-change: transform, opacity;
+}
+
+.story-panel-bazaar {
+  top: 48%;
+  transform: translateY(calc(-50% + var(--panel3-y)));
+  opacity: var(--panel3-opacity);
+  will-change: transform, opacity;
+}
+
+.story-panel h2 {
+  font-family: 'Ogg Medium', Georgia, serif;
+  font-size: clamp(32px, 4vw, 54px);
+  font-weight: normal;
+  line-height: 1.15;
+  color: #ffffff;
+  text-shadow: 0 4px 28px rgba(0, 0, 0, 0.75), 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.story-panel>p {
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.65;
+  opacity: 0.98;
+  color: #ffffff;
+  margin-top: 14px;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.8), 0 1px 4px rgba(0, 0, 0, 0.95);
+}
+
+/* ── Facts Side-by-Side (Matching CleanShot 00:02) ─────────── */
+.facts {
+  display: flex;
+  flex-direction: row;
+  gap: clamp(32px, 5vw, 64px);
+  margin-top: 32px;
+}
+
+.facts>div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.facts dt {
+  font-family: 'Ogg Medium', Georgia, serif;
+  font-size: clamp(38px, 4.5vw, 60px);
+  font-weight: normal;
+  color: #ffffff;
+  line-height: 1;
+  text-shadow: 0 3px 20px rgba(0, 0, 0, 0.75);
+}
+
+.facts dd {
+  font-size: 12px;
+  opacity: 0.88;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+  max-width: 160px;
+  line-height: 1.4;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+}
+
+/* ── Note Button (Pill CTA from CleanShot 00:05) ───────────── */
+.note-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  background: rgba(10, 60, 120, 0.50);
+  border: 1px solid rgba(238, 243, 255, 0.28);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 999px;
+  padding: 10px 22px;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--paper);
+  transition: background 200ms, border-color 200ms, transform 200ms;
+}
+
+.note-button:hover {
+  background: rgba(10, 60, 120, 0.70);
+  border-color: rgba(238, 243, 255, 0.45);
+  transform: translateY(-1px);
+}
+
+/* ── Embedded Scam Check Tool on Final Scroll Page ─────────── */
+.home-check-container {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, calc(-50% + var(--check-y)));
+  opacity: var(--check-opacity);
+  visibility: var(--check-visibility);
+  pointer-events: var(--check-events);
+  z-index: 10;
+  width: min(840px, 94vw);
+  max-height: calc(100vh - 100px);
+  will-change: transform, opacity;
+  transition: opacity 300ms ease;
+}
+
+/* ── Tool Page Shell ───────────────────────────────────────── */
+.tool-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--ink);
+}
+
+.tool-content {
+  flex: 1;
+  padding: clamp(40px, 8vh, 80px) clamp(24px, 6vw, 96px);
+  max-width: 840px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.tool-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 48px;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  transition: opacity 200ms;
+}
+
+.tool-back:hover {
+  opacity: 1;
+}

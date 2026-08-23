@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Deep midnight luxury background glow -->
+    <radialGradient id="bgGlow" cx="50%" cy="38%" r="65%">
+      <stop offset="0%" stop-color="#162842" />
+      <stop offset="45%" stop-color="#0a131f" />
+      <stop offset="100%" stop-color="#020509" />
+    </radialGradient>
+
+    <!-- Metallic Gold Foil Gradient -->
+    <linearGradient id="goldGrad" x1="15%" y1="10%" x2="85%" y2="90%">
+      <stop offset="0%" stop-color="#fff5db" />
+      <stop offset="20%" stop-color="#ecd18f" />
+      <stop offset="45%" stop-color="#d4af37" />
+      <stop offset="65%" stop-color="#fff1c5" />
+      <stop offset="85%" stop-color="#b8860b" />
+      <stop offset="100%" stop-color="#8a6108" />
+    </linearGradient>
+
+    <!-- Outer Gold Edge Gradient -->
+    <linearGradient id="edgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fdf2cd" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#d4af37" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#8a6108" stop-opacity="0.7" />
+    </linearGradient>
+
+    <!-- Soft Ambient Gold Glow -->
+    <filter id="luxuryGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComponentTransfer in="blur" result="glow1">
+        <feFuncA type="linear" slope="0.4" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode in="glow1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Luxury Background Base -->
+  <rect width="512" height="512" rx="120" fill="url(#bgGlow)" />
+
+  <!-- Delicate Outer Bevel Ring -->
+  <rect x="20" y="20" width="472" height="472" rx="104" fill="none" stroke="url(#edgeGrad)" stroke-width="3" />
+
+  <!-- Subtle Inner Halo Accent -->
+  <circle cx="256" cy="256" r="198" fill="none" stroke="url(#edgeGrad)" stroke-width="1.2" stroke-dasharray="4 6" opacity="0.5" />
+
+  <!-- Luxurious Serif 'P' Monogram -->
+  <g filter="url(#luxuryGlow)">
+    <!-- Custom High-End Sculpted Serif Letter P -->
+    <path
+      d="M 166 128
+         L 294 128
+         C 342 128 392 152 392 216
+         C 392 278 344 308 290 308
+         L 230 308
+         L 230 366
+         L 256 366
+         C 262 366 266 370 266 376
+         L 266 384
+         L 146 384
+         L 146 376
+         C 146 370 150 366 156 366
+         L 182 366
+         L 182 146
+         L 156 146
+         C 150 146 146 142 146 136
+         L 146 128
+         Z
+         M 230 152
+         L 230 284
+         L 284 284
+         C 324 284 350 258 350 216
+         C 350 174 322 152 284 152
+         Z"
+      fill="url(#goldGrad)"
+    />
+
+    <!-- Diamond Accent Sparkle -->
+    <polygon points="384,140 389,152 401,157 389,162 384,174 379,162 367,157 379,152" fill="#fff5db" opacity="0.85" />
+  </g>
+</svg>
